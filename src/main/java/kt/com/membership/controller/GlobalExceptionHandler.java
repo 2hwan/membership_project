@@ -6,6 +6,7 @@ import kt.com.membership.exception.DuplicateUserException;
 import kt.com.membership.exception.InvalidPasswordException;
 import kt.com.membership.exception.InvalidUserIdException;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -20,6 +21,11 @@ public class GlobalExceptionHandler {
      * */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public JsonErrorResponse invalidInputException(){
+        return new JsonErrorResponse(API_STATUS.BAD_REQUEST,"입력값이 잘못되었습니다.");
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public JsonErrorResponse invalidJsonException(){
         return new JsonErrorResponse(API_STATUS.BAD_REQUEST,"입력값이 잘못되었습니다.");
     }
 
