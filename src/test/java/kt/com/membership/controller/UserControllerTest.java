@@ -7,14 +7,9 @@ import kt.com.membership.exception.DuplicateUserException;
 import kt.com.membership.exception.InvalidPasswordException;
 import kt.com.membership.exception.InvalidUserIdException;
 import kt.com.membership.service.UserService;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
 

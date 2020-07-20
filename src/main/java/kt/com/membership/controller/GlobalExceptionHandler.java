@@ -15,14 +15,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ResponseBody
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(DuplicateUserException.class)
-    public JsonErrorResponse duplicateUserException(){
-        return new JsonErrorResponse(API_STATUS.BAD_REQUEST,"이미 가입된 아이디입니다.");
-    }
-
+    /**
+     * Binding Input Exception
+     * */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public JsonErrorResponse invalidInputException(){
         return new JsonErrorResponse(API_STATUS.BAD_REQUEST,"입력값이 잘못되었습니다.");
+    }
+
+    /**
+     * User Exception
+     */
+    @ExceptionHandler(DuplicateUserException.class)
+    public JsonErrorResponse duplicateUserException(){
+        return new JsonErrorResponse(API_STATUS.BAD_REQUEST,"이미 가입된 아이디입니다.");
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
