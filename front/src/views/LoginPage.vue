@@ -1,20 +1,20 @@
 <template>
 	<div class="container">
 		<div class="row mt-5">
-			<div class="col-4"></div>
-			<div class="col-4 z-depth-3">
-				<form>
-					<p class="h4 text-center my-4">Login</p>
+			<div class="col-3"></div>
+			<div class="col-6 z-depth-3">
+				<form class="px-5">
+					<p class="h4 text-center my-5">Login</p>
 					<div class="grey-text container">
-						<mdb-input label="Your Id" icon="envelope" type="text" v-model="userId" />
-						<mdb-input label="Your password" icon="lock" type="password" v-model="password" />
+						<mdb-input label="Your Id" icon="user" type="text" v-model="userId" class="mb-4" />
+						<mdb-input label="Your password" icon="lock" type="password" v-model="password" class="mb-4" />
 					</div>
 					<div class="text-center mb-4">
 						<mdb-btn @click="submitLogin">Login</mdb-btn>
 					</div>
 				</form>
 			</div>
-			<div class="col-4"></div>
+			<div class="col-3"></div>
 		</div>
 	</div>
 </template>
@@ -36,6 +36,8 @@ export default {
 		};
 	},
 	methods: {
+		//todo
+		validateInput() {},
 		async submitLogin() {
 			const user = {
 				userId: this.userId,
