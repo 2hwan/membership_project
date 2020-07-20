@@ -5,8 +5,8 @@
 		</mdb-navbar-brand>
 		<mdb-navbar-toggler>
 			<mdb-navbar-nav right>
+				<mdb-nav-item class="mx-2" href="#" style="font-size: 20px;font-weight: bold"> <router-link to="/membership" style="color: white">멤버쉽</router-link></mdb-nav-item>
 				<template v-if="!isUserLogin">
-					<mdb-nav-item class="mx-2" href="#" style="font-size: 20px;font-weight: bold"> <router-link to="/membership" style="color: white">멤버쉽</router-link></mdb-nav-item>
 					<mdb-nav-item class="mx-2" href="#" style="font-size: 20px;font-weight: bold"><router-link to="/login" style="color: white">로그인</router-link></mdb-nav-item>
 					<mdb-nav-item class="mx-2" href="#" style="font-size: 20px;font-weight: bold"><router-link to="/signup" style="color: white">회원가입</router-link></mdb-nav-item>
 				</template>
