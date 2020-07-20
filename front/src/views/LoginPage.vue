@@ -1,0 +1,72 @@
+<template>
+	<div class="container">
+		<div class="row mt-5">
+			<div class="col-4"></div>
+			<div class="col-4 z-depth-3">
+				<form>
+					<p class="h4 text-center my-4">Login</p>
+					<div class="grey-text container">
+						<mdb-input label="Your Id" icon="envelope" type="text" v-model="userId" />
+						<mdb-input label="Your password" icon="lock" type="password" v-model="password" />
+					</div>
+					<div class="text-center mb-4">
+						<mdb-btn @click="submitLogin">Login</mdb-btn>
+					</div>
+				</form>
+			</div>
+			<div class="col-4"></div>
+		</div>
+	</div>
+</template>
+
+<script>
+import { mdbInput, mdbBtn } from 'mdbvue';
+import { loginUser } from '@/api';
+import { saveToken, saveUserId } from '@/utils/cookie';
+export default {
+	name: 'LoginPage',
+	components: {
+		mdbInput,
+		mdbBtn
+	},
+	data() {
+		return {
+			userId: '',
+			password: ''
+		};
+	},
+	methods: {
+		async submitLogin() {
+			const user = {
+				userId: this.userId,
+				password: this.password
+			};
+			try {
+				const response = await loginUser(user);
+				if (response.data.status != 200) {
+					alert(response.data.message);
+					return;
+				}
+				this.setStoreAndCookie(response);
+			} catch (e) {
+				alert('서버 에러');
+			}
+		},
+		setStoreAndCookie(response) {
+			const userId = response.data.data.user.userId;
+			const token = response.data.data.token;
+			const userData = {
+				userId: userId,
+				token: token
+			};
+
+			this.$store.commit('loginUser', userData);
+			saveUserId(userId);
+			saveToken(token);
+			this.$router.push('/');
+		}
+	}
+};
+</script>
+
+<style scoped></style>
