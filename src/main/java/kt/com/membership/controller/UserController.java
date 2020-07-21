@@ -39,15 +39,15 @@ public class UserController {
         return JsonResponse.UserInfoWithToken(API_STATUS.SUCCESS, user, token);
     }
 
-    // todo - 유저 정보 변경
-
-    // todo - 유저 삭제
-
     @ApiOperation(value = "유저 정보 조회")
     @GetMapping("/users/{userId}")
     public JsonResponse findUserInfo(@PathVariable String userId) throws Exception {
         User user = userService.findUserByUserId(userId);
         return JsonResponse.UserInfo(API_STATUS.SUCCESS, user);
     }
+
+    // todo - 유저 정보 변경
+
+    // todo - 유저 삭제
 
 }
