@@ -3,7 +3,7 @@ import { setInterceptors } from '@/api/interceptors';
 
 function createInstance() {
 	const instance = axios.create({
-		baseURL: 'http://localhost:8080'
+		baseURL: 'http://localhost:8080/team6'
 	});
 	return setInterceptors(instance);
 }

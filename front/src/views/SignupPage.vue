@@ -21,7 +21,7 @@
 								</select>
 							</div>
 							<div class="text-center py-4 mt-3">
-								<mdb-btn color="cyan" @click="signupUser">Register</mdb-btn>
+								<mdb-btn outline="default" darkWaves @click="signupUser">Register</mdb-btn>
 							</div>
 						</form>
 					</mdb-card-body>
@@ -71,7 +71,7 @@ export default {
 					alert(response.data.message);
 					return;
 				}
-				this.$router.push('/');
+				this.$router.push('/team6');
 				alert('환영합니다.');
 			} catch (e) {
 				alert(e);

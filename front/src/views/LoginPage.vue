@@ -10,7 +10,7 @@
 						<mdb-input label="Your password" icon="lock" type="password" v-model="password" class="mb-4" />
 					</div>
 					<div class="text-center mb-4">
-						<mdb-btn @click="submitLogin">Login</mdb-btn>
+						<mdb-btn outline="default" darkWaves @click="submitLogin">Login</mdb-btn>
 					</div>
 				</form>
 			</div>
@@ -65,7 +65,7 @@ export default {
 			this.$store.commit('loginUser', userData);
 			saveUserId(userId);
 			saveToken(token);
-			this.$router.push('/');
+			this.$router.push('/team6');
 		}
 	}
 };
