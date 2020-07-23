@@ -31,16 +31,12 @@ const router = new VueRouter({
 		},
 		{
 			path: '/team6/membership/signup',
-			component: () => import('@/views/MembershipSignupPage.vue')
+			component: () => import('@/views/MembershipSignupPage.vue'),
+			meta: { auth: true }
 		},
 		{
 			path: '/team6/membership/discount',
 			component: () => import('@/views/MembershipDiscountPage.vue')
-		},
-		{
-			path: '/team6/membership/movie',
-			component: () => import('@/views/MembershipMoviePage.vue'),
-			meta: { auth: true }
 		},
 		{
 			path: '/team6/membership/faq',

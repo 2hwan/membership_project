@@ -41,21 +41,6 @@ public class User {
     @Column
     private LocalDateTime joinDate;
 
-    @Column(nullable = false, length = 20)
-    private String membershipName;
-
-    @Column
-    private int basicPoint;
-
-    @Column
-    private int vipChoiceCount;
-
-    @Column
-    private int doubleMembershipCount;
-
-    @Column
-    private int availablePoint;
-
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles = new ArrayList<>();
 
@@ -71,11 +56,6 @@ public class User {
         this.callProd = userForm.getCallProd();
         this.isMembershipUser = false;
         this.joinDate = LocalDateTime.now();
-        this.membershipName = "";
-        this.basicPoint = 0;
-        this.vipChoiceCount = 0;
-        this.doubleMembershipCount = 0;
-        this.availablePoint = 0;
     }
 
     //==생성 메소드==//

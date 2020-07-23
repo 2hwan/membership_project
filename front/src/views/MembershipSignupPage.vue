@@ -7,7 +7,8 @@
 					<p class="mx-5 mb-5">
 						KT 멤버십 혜택을 위한 멤버십 가입 안내
 					</p>
-					<mdb-btn outline="white" size="md" icon="clone">가입하기</mdb-btn>
+					<AddCardModal></AddCardModal>
+					<mdb-btn outline="white" size="md" icon="clone" data-toggle="modal" data-target="#addCardModal">가입하기</mdb-btn>
 				</div>
 			</div>
 		</div>
@@ -20,9 +21,11 @@
 
 <script>
 import { mdbCard, mdbBtn } from 'mdbvue';
+import AddCardModal from '@/components/modal/AddCardModal';
 export default {
 	name: 'MembershipSignupPage',
 	components: {
+		AddCardModal,
 		mdbCard,
 		mdbBtn
 	}

@@ -13,7 +13,6 @@
 						<mdb-dropdown-item><router-link to="/team6/membership/info">멤버십 안내</router-link></mdb-dropdown-item>
 						<mdb-dropdown-item><router-link to="/team6/membership/signup">멤버십 가입</router-link></mdb-dropdown-item>
 						<mdb-dropdown-item><router-link to="/team6/membership/discount">멤버십 할인</router-link></mdb-dropdown-item>
-						<mdb-dropdown-item><router-link to="/team6/membership/movie">영화 예매</router-link></mdb-dropdown-item>
 						<mdb-dropdown-item><router-link to="/team6/membership/faq">FAQ</router-link></mdb-dropdown-item>
 					</mdb-dropdown-menu>
 				</mdb-dropdown>
