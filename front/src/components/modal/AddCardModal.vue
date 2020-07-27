@@ -10,47 +10,13 @@
 				</div>
 				<div class="modal-body">
 					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="defaultUnchecked" />
+						<input type="checkbox" class="custom-control-input" id="defaultUnchecked" v-model="check" />
 						<label class="custom-control-label" for="defaultUnchecked">멤버십 이용 약관에 동의합니다.</label>
-					</div>
-					<div class="container px-3">
-						<form class="mt-4">
-							<h5 class="text-left">카드 번호</h5>
-							<div class="row">
-								<div class="col">
-									<input type="text" class="form-control" minlength="4" maxlength="4" />
-								</div>
-								-
-								<div class="col">
-									<input type="text" class="form-control" minlength="4" maxlength="4" />
-								</div>
-								-
-								<div class="col">
-									<input type="text" class="form-control" minlength="4" maxlength="4" />
-								</div>
-								-
-								<div class="col">
-									<input type="text" class="form-control" minlength="4" maxlength="4" />
-								</div>
-							</div>
-						</form>
-						<form class="my-2">
-							<h5 class="text-left">연도 / 월</h5>
-							<div class="row">
-								<div class="col-2">
-									<input type="text" class="form-control" minlength="2" maxlength="2" />
-								</div>
-								/
-								<div class="col-2">
-									<input type="text" class="form-control" minlength="2" maxlength="2" />
-								</div>
-							</div>
-						</form>
 					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-					<button type="button" class="btn btn-primary">가입</button>
+					<button v-if="check" type="button" class="btn btn-primary" data-dismiss="modal" @click="signUpMembership">가입</button>
 				</div>
 			</div>
 		</div>
@@ -58,8 +24,33 @@
 </template>
 
 <script>
+import { signUpMembership } from '@/api';
+
 export default {
-	name: 'AddCardModal'
+	name: 'AddCardModal',
+	data() {
+		return {
+			check: false
+		};
+	},
+	methods: {
+		checkFlag() {
+			this.check = !this.check;
+		},
+		async signUpMembership() {
+			try {
+				const response = await signUpMembership(this.$store.state.userId);
+				if (response.data.status != 200) {
+					alert(response.data.message);
+				} else {
+					alert('가입되었습니다!');
+				}
+				this.$router.push('/team6/membership/info');
+			} catch (e) {
+				console.log(e);
+			}
+		}
+	}
 };
 </script>
 

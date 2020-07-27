@@ -10,10 +10,14 @@ function createInstance() {
 
 const instance = createInstance();
 
-export function signupUser(userData) {
+export function signUpUser(userData) {
 	return instance.post('signup', userData);
 }
 
 export function loginUser(userData) {
 	return instance.post('login', userData);
+}
+
+export function signUpMembership(userId) {
+	return instance.get('membership/signup/' + userId);
 }

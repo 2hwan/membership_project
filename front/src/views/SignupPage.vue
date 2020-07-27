@@ -34,7 +34,7 @@
 
 <script>
 import { mdbInput, mdbBtn, mdbCard, mdbCardBody } from 'mdbvue';
-import { signupUser } from '@/api';
+import { signUpUser } from '@/api';
 export default {
 	name: 'Basic',
 	components: {
@@ -66,7 +66,7 @@ export default {
 				callProd: this.callProd
 			};
 			try {
-				const response = await signupUser(userData);
+				const response = await signUpUser(userData);
 				if (response.data.status != 200) {
 					alert(response.data.message);
 					return;
