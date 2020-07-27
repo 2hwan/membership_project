@@ -2,10 +2,7 @@ package kt.com.membership.controller;
 
 import kt.com.membership.dto.API_STATUS;
 import kt.com.membership.dto.JsonErrorResponse;
-import kt.com.membership.exception.AlreadySignupMembership;
-import kt.com.membership.exception.DuplicateUserException;
-import kt.com.membership.exception.InvalidPasswordException;
-import kt.com.membership.exception.InvalidUserIdException;
+import kt.com.membership.exception.*;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -53,9 +50,26 @@ public class GlobalExceptionHandler {
         return new JsonErrorResponse(API_STATUS.BAD_REQUEST,"비밀번호가 틀립니다.");
     }
 
+    /**
+     * Membership
+     * */
     @ExceptionHandler(AlreadySignupMembership.class)
     public JsonErrorResponse alreadySignupMembershipException(){
         return new JsonErrorResponse(API_STATUS.BAD_REQUEST,"멤버십에 이미 가입 되었습니다.");
+    }
+
+    @ExceptionHandler(NotMembershipUser.class)
+    public JsonErrorResponse notMembershipUserException(){
+        return new JsonErrorResponse(API_STATUS.BAD_REQUEST,"멤버십에 가입되지 않은 유저입니다.");
+    }
+
+    @ExceptionHandler(NoAvailableChoiceCount.class)
+    public JsonErrorResponse noAvailableChoiceCount(){
+        return new JsonErrorResponse(API_STATUS.BAD_REQUEST,"잔여 횟수가 없습니다.");
+    }
+    @ExceptionHandler(NoAvailablePoint.class)
+    public JsonErrorResponse noAvailablePoint(){
+        return new JsonErrorResponse(API_STATUS.BAD_REQUEST,"사용가능 포인트가 부족합니다.");
     }
 
 }

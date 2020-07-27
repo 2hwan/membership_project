@@ -1,5 +1,6 @@
 package kt.com.membership.dto;
 
+import kt.com.membership.domain.Membership;
 import kt.com.membership.domain.User;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,6 +33,14 @@ public class JsonResponse {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("user",user);
         jsonObject.put("token",token);
+        jsonResponse.data = jsonObject;
+        return jsonResponse;
+    }
+
+    public static JsonResponse MembershipInfo(API_STATUS status, Membership membership){
+        JsonResponse jsonResponse = new JsonResponse(status);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("membership",membership);
         jsonResponse.data = jsonObject;
         return jsonResponse;
     }
