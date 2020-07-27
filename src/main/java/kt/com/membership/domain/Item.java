@@ -1,5 +1,6 @@
 package kt.com.membership.domain;
 
+import kt.com.membership.dto.ItemForm;
 import lombok.Getter;
 
 import javax.persistence.Entity;
@@ -22,5 +23,19 @@ public class Item {
     private String name;
 
     private String category;
+
+    public Item(){}
+
+    public Item(ItemForm itemForm){
+        this.price = itemForm.getPrice();
+        this.monthCount = itemForm.getMonthCount();
+        this.name = itemForm.getName();
+        this.category = itemForm.getCategory();
+    }
+
+    //==생성 메소드==//
+    public static Item createItem(ItemForm itemForm){
+        return new Item(itemForm);
+    }
 
 }
