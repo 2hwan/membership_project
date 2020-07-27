@@ -17,7 +17,7 @@ public class Item {
 
     private int price;
 
-    private int count;
+    private int monthCount;
 
     private String name;
 

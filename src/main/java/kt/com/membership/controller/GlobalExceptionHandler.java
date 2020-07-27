@@ -2,6 +2,7 @@ package kt.com.membership.controller;
 
 import kt.com.membership.dto.API_STATUS;
 import kt.com.membership.dto.JsonErrorResponse;
+import kt.com.membership.exception.AlreadySignupMembership;
 import kt.com.membership.exception.DuplicateUserException;
 import kt.com.membership.exception.InvalidPasswordException;
 import kt.com.membership.exception.InvalidUserIdException;
@@ -50,6 +51,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(InvalidPasswordException.class)
     public JsonErrorResponse invalidPasswordException(){
         return new JsonErrorResponse(API_STATUS.BAD_REQUEST,"비밀번호가 틀립니다.");
+    }
+
+    @ExceptionHandler(AlreadySignupMembership.class)
+    public JsonErrorResponse alreadySignupMembershipException(){
+        return new JsonErrorResponse(API_STATUS.BAD_REQUEST,"멤버십에 이미 가입 되었습니다.");
     }
 
 }

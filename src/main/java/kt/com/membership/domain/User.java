@@ -77,4 +77,16 @@ public class User {
         this.phoneNumber = userForm.getPhoneNumber();
         this.callProd = userForm.getCallProd();
     }
+
+    public boolean alreadyMembershipUser(){
+        if(this.isMembershipUser){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public void signUpMembership(){
+        this.isMembershipUser = true;
+    }
 }
