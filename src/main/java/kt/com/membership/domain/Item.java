@@ -38,4 +38,10 @@ public class Item {
         return new Item(itemForm);
     }
 
+    //==비지니스 로직==//
+    public void updateItem(ItemForm itemForm) {
+        this.price = itemForm.getPrice();
+        this.category = itemForm.getCategory();
+        this.monthCount = itemForm.getMonthCount();
+    }
 }

@@ -72,4 +72,17 @@ public class GlobalExceptionHandler {
         return new JsonErrorResponse(API_STATUS.BAD_REQUEST,"사용가능 포인트가 부족합니다.");
     }
 
+    /**
+     * Item
+     * */
+    @ExceptionHandler(DuplicateItemException.class)
+    public JsonErrorResponse duplicateItemException(){
+        return new JsonErrorResponse(API_STATUS.BAD_REQUEST, "중복된 아이템입니다.");
+    }
+
+    @ExceptionHandler(InvalidItemException.class)
+    public JsonErrorResponse invalidItemException(){
+        return new JsonErrorResponse(API_STATUS.BAD_REQUEST, "존재하지 않는 아이템입니다.");
+    }
+
 }

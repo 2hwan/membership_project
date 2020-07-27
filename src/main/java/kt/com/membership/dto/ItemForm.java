@@ -4,16 +4,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter
 @Setter
 public class ItemForm {
 
-    @NotEmpty(message = "ID는 필수 입니다.")
+    @NotNull(message = "ID는 필수 입니다.")
     private int price;
 
-    @NotEmpty(message = "사용횟수는 필수 입니다.")
+    @NotNull(message = "사용횟수는 필수 입니다.")
     private int monthCount;
 
     @NotEmpty(message = "이름은 입니다.")
