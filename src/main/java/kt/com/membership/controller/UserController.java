@@ -40,14 +40,24 @@ public class UserController {
     }
 
     @ApiOperation(value = "유저 정보 조회")
-    @GetMapping("/users/{userId}")
+    @GetMapping("/users/info/{userId}")
     public JsonResponse findUserInfo(@PathVariable String userId) throws Exception {
         User user = userService.findUserByUserId(userId);
         return JsonResponse.UserInfo(API_STATUS.SUCCESS, user);
     }
 
-    // todo - 유저 정보 변경
+    @ApiOperation(value = "유저 정보 변경")
+    @PostMapping("/users/update")
+    public JsonResponse updateUser(@RequestBody @Valid UserForm userForm) throws Exception {
+        userService.updateUserInfo(userForm);
+        return new JsonResponse(API_STATUS.SUCCESS);
+    }
 
-    // todo - 유저 삭제
+    @ApiOperation(value = "유저 삭제")
+    @GetMapping("/users/delete/{userId}")
+    public JsonResponse deleteUser(@PathVariable String userId) throws Exception {
+        userService.deleteUser(userId);
+        return new JsonResponse(API_STATUS.SUCCESS);
+    }
 
 }

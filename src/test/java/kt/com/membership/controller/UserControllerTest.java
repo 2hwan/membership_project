@@ -26,16 +26,21 @@ class UserControllerTest {
     @Autowired
     UserService userService;
 
-    @Test
-    public void signUpUser() throws Exception {
-        //given
+    public static UserForm getUserForm(){
         UserForm userForm = new UserForm();
         userForm.setUserId("test_id");
         userForm.setPassword("test_password");
         userForm.setName("test_name");
         userForm.setEmail("test@test.com");
         userForm.setPhoneNumber("010-0000-1111");
-        userForm.setCallProd("80요금제");
+        userForm.setCallProd("슈퍼플랜 베이직");
+        return userForm;
+    }
+
+    @Test
+    public void signUpUser() throws Exception {
+        //given
+        UserForm userForm = getUserForm();
         userController.signUpUser(userForm);
 
         //when
@@ -48,15 +53,9 @@ class UserControllerTest {
     }
 
     @Test
-    public void signUpDuplicateUserExpectedDuplicateUserException() throws Exception {
+    public void signUpDuplicateUserShouldDuplicateUserException() throws Exception {
         //given
-        UserForm userForm = new UserForm();
-        userForm.setUserId("test_id");
-        userForm.setPassword("test_password");
-        userForm.setName("test_name");
-        userForm.setEmail("test@test.com");
-        userForm.setPhoneNumber("010-0000-1111");
-        userForm.setCallProd("80요금제");
+        UserForm userForm = getUserForm();
         userController.signUpUser(userForm);
 
         //when
@@ -83,7 +82,7 @@ class UserControllerTest {
     }
 
     @Test
-    void loginInvalidUserIdExpectedInvalidUserIdException() throws Exception {
+    void loginInvalidUserIdShouldInvalidUserIdException() throws Exception {
         //given
         signUpUser();
         LoginForm loginForm = new LoginForm();
@@ -98,7 +97,7 @@ class UserControllerTest {
     }
 
     @Test
-    void loginInvalidPasswordExpectedInvalidPasswordException() throws Exception {
+    void loginInvalidPasswordShouldInvalidPasswordException() throws Exception {
         //given
         signUpUser();
         LoginForm loginForm = new LoginForm();
@@ -127,7 +126,7 @@ class UserControllerTest {
     }
 
     @Test
-    void findUserInfoByInvalidUserIdExpectedInvalidUserIdException() {
+    void findUserInfoByInvalidUserIdShouldInvalidUserIdException() {
         assertThrows(InvalidUserIdException.class, () -> {
             userService.findUserByUserId("test_id");
         });
@@ -158,7 +157,7 @@ class UserControllerTest {
     }
 
     @Test
-    void updateInvalidUserExpectedInvalidUserIdException() throws Exception {
+    void updateInvalidUserShouldInvalidUserIdException() throws Exception {
         //given
         signUpUser();
         UserForm userForm = new UserForm();
@@ -190,7 +189,7 @@ class UserControllerTest {
     }
 
     @Test
-    void deleteInvalidUserIdExpectedInvalidUserIdException(){
+    void deleteInvalidUserIdShouldInvalidUserIdException(){
         //given
         //when
         //then
