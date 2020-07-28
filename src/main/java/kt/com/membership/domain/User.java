@@ -123,4 +123,8 @@ public class User implements UserDetails {
         this.isMembershipUser = true;
     }
 
+    public boolean isMembershipUser(){
+        return this.isMembershipUser;
+    }
+
 }

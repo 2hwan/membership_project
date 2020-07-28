@@ -2,6 +2,7 @@ package kt.com.membership.service;
 
 import kt.com.membership.domain.Membership;
 import kt.com.membership.domain.User;
+import kt.com.membership.dto.PointForm;
 import kt.com.membership.exception.AlreadySignupMembership;
 import kt.com.membership.exception.InvalidUserIdException;
 import kt.com.membership.exception.NotMembershipUser;
@@ -11,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -46,4 +48,14 @@ public class MembershipService {
     /**
      * Update
      * */
+    public void usePoint(PointForm pointForm) throws Exception {
+        User user = userRepository.findByUserId(pointForm.getUserId()).orElseThrow(() -> new InvalidUserIdException());
+        Membership membership = membershipRepository.findByUser(user).orElseThrow(() -> new NotMembershipUser());
+
+        membership.usedPoint(pointForm.getUsingPoint());
+        membershipRepository.save(membership);
+
+        //todo history;
+
+    }
 }
