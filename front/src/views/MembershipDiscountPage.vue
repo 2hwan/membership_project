@@ -12,30 +12,44 @@
 		</div>
 
 		<mdb-container>
-			<mdb-tabs :active="0" default :links="[{ text: '전체' }, { text: '영화/공연' }, { text: '외식' }, { text: '카페' }, { text: '여행/교통' }]" :content="['', '', '']" />
+			<mdb-tabs
+				:active="0"
+				justify
+				:links="[
+					{ text: '전체', icon: 'ellipsis-h', slot: 'total' },
+					{ text: '영화/공연', icon: 'video' },
+					{ text: '외식', icon: 'utensils' },
+					{ text: '카페', icon: 'coffee' },
+					{ text: '여행/교통', icon: 'plane' }
+				]"
+				:transition-duration="0.5"
+				transition-style="linear"
+			>
+				<template :slot="'total'">
+					<div class="row">
+						<div v-for="item in items" class="col-3 mt-3" :key="item.name">
+							<mdb-card>
+								<mdb-card-image class="ml-auto mr-auto" v-bind:src="item.img_path"></mdb-card-image>
+								<mdb-card-body>
+									<mdb-card-title class="text-center">{{ item.name }}</mdb-card-title>
+									<mdb-card-text class="ml-3">
+										<div class="class-benefit">
+											<div class="color-vvip" v-if="item.vvip_contents">VVIP</div>
+											<h6 v-if="item.vvip_contents">{{ item.vvip_contents }} <br /></h6>
+											<div class="color-vip" v-if="item.vip_contents">VIP</div>
+											<h6 v-if="item.vip_contents">{{ item.vip_contents }}<br /></h6>
+											<div class="color-normal" v-if="item.normal_contents">일반</div>
+											<h6 v-if="item.normal_contents">{{ item.normal_contents }}</h6>
+										</div>
+									</mdb-card-text>
+									<mdb-btn class="float-right mr-3" color="primary" @click="usePoint(item)">포인트 사용</mdb-btn>
+								</mdb-card-body>
+							</mdb-card>
+						</div>
+					</div>
+				</template>
+			</mdb-tabs>
 		</mdb-container>
-
-		<div class="row">
-			<div v-for="item in items" class="col-3 mt-3" :key="item.name">
-				<mdb-card>
-					<mdb-card-image class="ml-auto mr-auto" v-bind:src="item.img_path"></mdb-card-image>
-					<mdb-card-body>
-						<mdb-card-title class="text-center">{{ item.name }}</mdb-card-title>
-						<mdb-card-text class="ml-3">
-							<div class="class-benefit">
-								<div class="color-vvip" v-if="item.vvip_contents">VVIP</div>
-								<h6 v-if="item.vvip_contents">{{ item.vvip_contents }} <br /></h6>
-								<div class="color-vip" v-if="item.vip_contents">VIP</div>
-								<h6 v-if="item.vip_contents">{{ item.vip_contents }}<br /></h6>
-								<div class="color-normal" v-if="item.normal_contents">일반</div>
-								<h6 v-if="item.normal_contents">{{ item.normal_contents }}</h6>
-							</div>
-						</mdb-card-text>
-						<mdb-btn class="float-right mr-3" color="primary" @click="usePoint(item)">포인트 사용</mdb-btn>
-					</mdb-card-body>
-				</mdb-card>
-			</div>
-		</div>
 	</mdb-card>
 </template>
 
