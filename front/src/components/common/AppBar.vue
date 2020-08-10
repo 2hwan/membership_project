@@ -1,5 +1,5 @@
 <template>
-	<mdb-navbar color="aqua-gradient" dark container>
+	<mdb-navbar color="aqua-gradient" dark container class="z-depth-0">
 		<mdb-navbar-brand>
 			<router-link to="/team6" style="color: white"><img src="@/assets/ktmark.png" width="40px" alt=""/></router-link>
 		</mdb-navbar-brand>
