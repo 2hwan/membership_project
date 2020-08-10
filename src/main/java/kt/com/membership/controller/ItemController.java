@@ -29,6 +29,15 @@ public class ItemController {
         return new JsonResponse(API_STATUS.SUCCESS);
     }
 
+    @ApiOperation(value = "아이템 추가 여러개")
+    @PostMapping("/items/new/arr")
+    public JsonResponse addItems(@RequestBody @Valid ItemForm[] itemForms) throws Exception {
+        for(ItemForm itemForm:itemForms){
+            itemService.addItem(itemForm);
+        }
+        return new JsonResponse(API_STATUS.SUCCESS);
+    }
+
     @ApiOperation(value = "아이템 목록 조회")
     @GetMapping("/items/info")
     public JsonResponse itemList(){

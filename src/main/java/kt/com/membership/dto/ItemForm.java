@@ -24,13 +24,13 @@ public class ItemForm {
     private String vip_contents;
     private String normal_contents;
 
-    @NotEmpty(message = "point는 필수 입니다.")
+    @NotNull(message = "point는 필수 입니다.")
     private int vvip_point;
 
-    @NotEmpty(message = "point는 필수 입니다.")
+    @NotNull(message = "point는 필수 입니다.")
     private int vip_point;
 
-    @NotEmpty(message = "point는 필수 입니다.")
+    @NotNull(message = "point는 필수 입니다.")
     private int normal_point;
 
     @NotEmpty(message = "img_path는 필수 입니다.")
