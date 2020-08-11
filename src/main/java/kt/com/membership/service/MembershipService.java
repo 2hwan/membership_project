@@ -52,6 +52,7 @@ public class MembershipService {
     /**
      * Update
      */
+    @Transactional
     public void usePoint(PointForm pointForm) throws Exception {
         User user = userRepository.findByUserId(pointForm.getUserId()).orElseThrow(() -> new InvalidUserIdException());
         Membership membership = membershipRepository.findByUser(user).orElseThrow(() -> new NotMembershipUser());
@@ -62,8 +63,35 @@ public class MembershipService {
         membership.usedPoint(pointForm.getUsingPoint());
         membershipRepository.save(membership);
 
-        History history = History.createHistory(user, membership, item, pointForm.getUsingPoint());
-        historyRepository.save(history);
+        saveHistory(user,membership,item,pointForm.getUsingPoint());
+    }
 
+    @Transactional
+    public void useVip(PointForm pointForm) throws Exception {
+        User user = userRepository.findByUserId(pointForm.getUserId()).orElseThrow(() -> new InvalidUserIdException());
+        Membership membership = membershipRepository.findByUser(user).orElseThrow(() -> new NotMembershipUser());
+        Item item = itemRepository.findById(pointForm.getItemId()).orElseThrow(() -> new InvalidItemException());
+
+        membership.useVipChoiceCount(pointForm.getUsingPoint());
+        membershipRepository.save(membership);
+
+        saveHistory(user,membership,item,pointForm.getUsingPoint());
+    }
+
+    @Transactional
+    public void useVvip(PointForm pointForm) throws Exception {
+        User user = userRepository.findByUserId(pointForm.getUserId()).orElseThrow(() -> new InvalidUserIdException());
+        Membership membership = membershipRepository.findByUser(user).orElseThrow(() -> new NotMembershipUser());
+        Item item = itemRepository.findById(pointForm.getItemId()).orElseThrow(() -> new InvalidItemException());
+
+        membership.useVvipChoiceCount(pointForm.getUsingPoint());
+        membershipRepository.save(membership);
+
+        saveHistory(user,membership,item,pointForm.getUsingPoint());
+    }
+
+    public void saveHistory(User user, Membership membership, Item item, int point) {
+        History history = History.createHistory(user, membership, item, point);
+        historyRepository.save(history);
     }
 }

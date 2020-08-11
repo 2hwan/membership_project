@@ -67,9 +67,15 @@ public class Membership {
                 this.vipChoiceCount = 0;
                 this.vvipChoiceCount = 0;
                 break;
+            default:
+                this.grade = "일반";
+                this.availablePoint = 0;
+                this.vipChoiceCount = 0;
+                this.vvipChoiceCount = 0;
+                break;
         }
         this.user = user;
-        this.cardNumber = "0000-0000-0000-0000";
+        this.cardNumber = ""+(int)(Math.random() * 10000)+"-"+(int)(Math.random() * 10000)+"-"+(int)(Math.random() * 10000)+"-"+(int)(Math.random() * 10000);
         this.createDate = LocalDateTime.now();
     }
 
@@ -79,7 +85,7 @@ public class Membership {
     }
 
     public void useVipChoiceCount(int usingPoint) throws NoAvailableChoiceCount, NoAvailablePoint {
-        if (this.vipChoiceCount == 0) {
+        if (this.vipChoiceCount <= 0) {
             throw new NoAvailableChoiceCount();
         }
         usedPoint(usingPoint);
@@ -87,7 +93,7 @@ public class Membership {
     }
 
     public void useVvipChoiceCount(int usingPoint) throws NoAvailableChoiceCount, NoAvailablePoint {
-        if (this.vvipChoiceCount == 0) {
+        if (this.vvipChoiceCount <= 0) {
             throw new NoAvailableChoiceCount();
         }
         usedPoint(usingPoint);

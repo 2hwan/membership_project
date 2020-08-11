@@ -23,6 +23,12 @@ class MembershipControllerTest {
     MembershipService membershipService;
 
     @Test
+    public void createRandomCardNumber(){
+        int v = (int)(Math.random() * 10000);
+        System.out.println(v);
+    }
+
+    @Test
     public void signUpMembership() throws Exception {
         //given
         UserForm userForm = new UserForm();

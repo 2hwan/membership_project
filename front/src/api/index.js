@@ -25,3 +25,7 @@ export function signUpMembership(userId) {
 export function getItemsInfoList() {
 	return instance.get('items/info');
 }
+
+export function getUserInfo(userId) {
+	return instance.get('membership/info/' + userId);
+}

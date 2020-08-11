@@ -37,15 +37,26 @@ public class MembershipController {
     }
 
     @ApiOperation(value = "멤버십 포인트 사용")
-    @PostMapping("/membership/point")
+    @PostMapping("/membership/normal")
     public JsonResponse usePoint(@RequestBody @Valid PointForm pointForm) throws Exception {
         membershipService.usePoint(pointForm);
         return new JsonResponse(API_STATUS.SUCCESS);
     }
 
-//   todo @ApiOperation(value = "멤버십 vip count")
+    @ApiOperation(value = "멤버십 vip 포인트 사용")
+    @PostMapping("/membership/vip")
+    public JsonResponse useVipPoint(@RequestBody @Valid PointForm pointForm) throws Exception {
+        membershipService.useVip(pointForm);
+        return new JsonResponse(API_STATUS.SUCCESS);
+    }
 
-//   todo @ApiOperation(value = "멤버십 vvip count")
+    @ApiOperation(value = "멤버십 vvip 포인트 사용")
+    @PostMapping("/membership/vvip")
+    public JsonResponse useVvipPoint(@RequestBody @Valid PointForm pointForm) throws Exception {
+        membershipService.useVvip(pointForm);
+        return new JsonResponse(API_STATUS.SUCCESS);
+    }
+
 
 
 }
