@@ -76,13 +76,35 @@
 						<strong>VIP CHOICE 잔여횟수</strong>
 					</h2>
 				</mdb-col>
-				<mdb-col class="my-auto">
+				<mdb-col class="my-auto p-5">
 					<h2 class="text-center mr-5" style="color:orangered;font-weight: bold">5회</h2>
 				</mdb-col>
 				<mdb-col class="my-auto">
 					<mdb-btn outline="primary" size="lg">사용 내역</mdb-btn>
-				</mdb-col> </mdb-row
-			><mdb-row hover class="rounded z-depth-1-half mb-4 py-5">
+				</mdb-col>
+			</mdb-row>
+			<mdb-row hover class="rounded z-depth-1-half mb-4 py-5">
+				<mdb-col col="3">
+					<mdb-view>
+						<img class="justify-content-center mx-auto my-auto" src="@/assets/vvipimage.png" alt="Sample image" width="100px" />
+						<a>
+							<mdb-mask overlay="white-slight" waves />
+						</a>
+					</mdb-view>
+				</mdb-col>
+				<mdb-col col="4" class="my-auto">
+					<h2 class="font-weight-bold p-0">
+						<strong>VVIP CHOICE 잔여횟수</strong>
+					</h2>
+				</mdb-col>
+				<mdb-col class="my-auto">
+					<h2 class="text-center mr-5" style="color:orangered;font-weight: bold">3회</h2>
+				</mdb-col>
+				<mdb-col class="my-auto">
+					<mdb-btn outline="primary" size="lg">사용 내역</mdb-btn>
+				</mdb-col>
+			</mdb-row>
+			<mdb-row hover class="rounded z-depth-1-half mb-4 py-5">
 				<mdb-col col="3">
 					<mdb-view>
 						<img class="justify-content-center mx-auto my-auto" src="@/assets/cardimage.png" alt="Sample image" width="100px" />
