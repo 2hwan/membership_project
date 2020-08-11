@@ -17,4 +17,8 @@ public class PointForm {
 
     @NotNull(message = "포인트는 필수입니다.")
     private int usingPoint;
+
+    @NotNull(message = "아이템 id는 필수입니다.")
+    private Long itemId;
+
 }

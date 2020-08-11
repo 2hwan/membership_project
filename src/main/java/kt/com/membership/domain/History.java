@@ -36,5 +36,22 @@ public class History {
 
     LocalDateTime usingDate;
 
+    public History() {
+    }
+
+    public History(User user, Membership membership, Item item, int usingPoint) {
+        this.user = user;
+        this.membership = membership;
+        this.item = item;
+        this.usingPoint = usingPoint;
+        this.remainPoint = membership.getAvailablePoint();
+        this.previousPoint = this.remainPoint + usingPoint;
+        this.usingDate = LocalDateTime.now().plusHours(9);
+    }
+
+    //==생성 메소드==//
+    public static History createHistory(User user, Membership membership, Item item, int usingPoint) {
+        return new History(user, membership, item, usingPoint);
+    }
 
 }

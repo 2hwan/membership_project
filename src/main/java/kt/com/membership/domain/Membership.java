@@ -78,17 +78,19 @@ public class Membership {
         return new Membership(user);
     }
 
-    public void useVipChoiceCount() throws NoAvailableChoiceCount {
+    public void useVipChoiceCount(int usingPoint) throws NoAvailableChoiceCount, NoAvailablePoint {
         if (this.vipChoiceCount == 0) {
             throw new NoAvailableChoiceCount();
         }
+        usedPoint(usingPoint);
         this.vipChoiceCount--;
     }
 
-    public void useVvipChoiceCount() throws NoAvailableChoiceCount {
+    public void useVvipChoiceCount(int usingPoint) throws NoAvailableChoiceCount, NoAvailablePoint {
         if (this.vvipChoiceCount == 0) {
             throw new NoAvailableChoiceCount();
         }
+        usedPoint(usingPoint);
         this.vvipChoiceCount--;
     }
 
