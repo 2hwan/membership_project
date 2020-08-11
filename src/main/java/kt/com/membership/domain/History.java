@@ -36,6 +36,8 @@ public class History {
 
     LocalDateTime usingDate;
 
+//    private String type;
+
     public History() {
     }
 

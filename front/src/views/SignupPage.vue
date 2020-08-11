@@ -15,9 +15,11 @@
 								<mdb-input label="Your password" icon="lock" group type="password" validate v-model="password" />
 								<select class="browser-default custom-select" v-model="callProd">
 									<option selected>요금제</option>
-									<option value="요금제1">요금제1</option>
-									<option value="요금제2">요금제2</option>
-									<option value="요금제3">요금제3</option>
+
+									<option value="슈퍼플랜 프리미엄">슈퍼플랜 프리미엄</option>
+									<option value="슈퍼플랜 스페셜">슈퍼플랜 스페셜</option>
+									<option value="슈퍼플랜 베이직">슈퍼플랜 베이직</option>
+									<option value="슈퍼플랜 슬림">슈퍼플랜 슬림</option>
 								</select>
 							</div>
 							<div class="text-center py-4 mt-3">
